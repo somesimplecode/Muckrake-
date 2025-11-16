@@ -44,7 +44,7 @@ cd muckrake
 2. Find **Muckrake** in the list
 3. Click the pin 📌 icon to keep it visible
 
-## 🔑 Setup
+## Setup
 
 ### Get Your API Keys
 
