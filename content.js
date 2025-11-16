@@ -138,9 +138,7 @@ function displayResults(results) {
                         <p class="claim-status">${statusText}</p>
         `;
 
-
         if (result.sources.length > 0) {
-
             if (result.verified === 'false' && result.note) {
                 html += `<p class="false-note">🚫 ${result.note}</p>`;
             } else if (result.verified === 'needs-context' && result.note) {
@@ -150,13 +148,8 @@ function displayResults(results) {
             }
 
             html += `<div class="sources-list">
-                <div class="sources-header">Sources:</div>`;
-            if (result.verified === 'uncertain') {
-                html += `<p class="uncertain-note">⚠️ Sources found, but not from verified news outlets</p>`;
-            }
-
-            html += `<div class="sources-list">
                         <div class="sources-header">Sources:</div>`;
+            
             result.sources.forEach((source, i) => {
                 const sourceClass = source.trusted ? 'source-trusted' : 'source-untrusted';
                 html += `
