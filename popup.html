@@ -1,0 +1,71 @@
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="newspaper-header">
+        <h1>The Muckrake</h1>
+        <p class="newspaper-motto">"Journalism's first obligation is to the truth."</p>
+    </div>
+
+    <div class="main-controls">
+        <button id="toggleButton">
+            <span id="buttonLabel">Start Listening</span>
+            <span id="buttonThrobber" class="throbber hidden"></span>
+        </button>
+        <p id="status">Not Listening</p>
+
+        <ul id="progressList" class="progress-list">
+            <li class="step-item" data-step="upload">Sending audio off for transcription...</li>
+            <li class="step-item" data-step="transcription">Transcribing audio...</li>
+            <li class="step-item" data-step="claims">Locating claims...</li>
+            <li class="step-item" data-step="sources">Checking trusted news sources...</li>
+            <li class="step-item" data-step="done">Preparing your report...</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <div class="manual-search-section">
+            <h3>Quick Fact-Check</h3>
+            <input type="text" id="manualClaimInput" placeholder="Enter a claim to verify...">
+            <button id="manualSearchBtn">Check This Claim</button>
+        </div>
+
+        <button id="settingsBtn">⚙️ Settings</button>
+    </div>
+    
+    <div id="settingsPanel">
+        <h3>Keys</h3>
+
+        <div class="key-group">
+            <label>Transcription Key:</label>
+            <input type="password" id="key1Input" placeholder="AssemblyAI API Key">
+            <button id="saveKey1Btn">Save</button>
+        </div>
+
+        <div class="key-group">
+            <label>AI Analysis Key:</label>
+            <input type="password" id="key2Input" placeholder="OpenAI API Key">
+            <button id="saveKey2Btn">Save</button>
+        </div>
+
+        <div class="key-group">
+            <label>Search API Key:</label>
+            <input type="password" id="key3Input" placeholder="Google API Key">
+            <button id="saveKey3Btn">Save</button>
+        </div>
+
+        <div class="key-group">
+            <label>Search Engine ID:</label>
+            <input type="text" id="key4Input" placeholder="Google Search Engine ID">
+            <button id="saveKey4Btn">Save</button>
+        </div>
+
+        <div class="ornament">✦ ✦ ✦</div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+
+</html>

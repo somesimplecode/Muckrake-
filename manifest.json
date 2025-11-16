@@ -1,0 +1,45 @@
+{
+    "manifest_version": 3,
+    "name": "Muckrake",
+    "version": "1.0",
+    "description": "An AI powered fact checker of news and media",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage",
+        "tabCapture"
+    ],
+    "host_permissions": [
+        "https://*/*"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "results.css"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "sounds/typewriter.wav",
+                "sounds/hot-off-press.wav"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}

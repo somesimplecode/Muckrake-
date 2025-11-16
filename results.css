@@ -1,0 +1,459 @@
+.muckrake-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Georgia', serif;
+    perspective: 1000px;
+}
+
+.muckrake-panel {
+    background: #f9f6f0;
+    width: 90%;
+    max-width: 1000px;
+    height: 85%;
+    overflow-y: auto;
+    padding: 40px 50px;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid #d4c5a9;
+
+    /* Spinning newspaper entrance animation */
+    animation: newspaperSpin 1.2s ease-out;
+    transform-style: preserve-3d;
+}
+
+@keyframes newspaperSpin {
+    0% {
+        transform: translateZ(-3000px) rotateY(-720deg);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateZ(0) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+.manual-panel {
+    max-width: 700px;
+    height: auto;
+    max-height: 85%;
+}
+
+.muckrake-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-top: 4px double #333;
+    border-bottom: 4px double #333;
+    padding: 15px 0;
+    color: #1a1a1a;
+}
+
+
+.newspaper-subtitle {
+    text-align: center;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 20px;
+    color: #666;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.verdict-banner {
+    text-align: center;
+    margin: 30px 0;
+    padding: 25px 20px;
+    border: 4px solid #333;
+    background: white;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+
+    /* Stamp animation */
+    opacity: 0;
+    animation-name: stamp;
+    animation-duration: 0.6s;
+    animation-delay: 0.8s;
+    animation-fill-mode: forwards;
+    transform: rotate(0deg) scale(1);
+}
+
+.verdict-verified {
+    border-color: #2d8659;
+    background: linear-gradient(to bottom, #f0fdf4 0%, white 100%);
+}
+
+.verdict-partial {
+    border-color: #f59e0b;
+    background: linear-gradient(to bottom, #fffbeb 0%, white 100%);
+}
+
+.verdict-unverified {
+    border-color: #c62828;
+    background: linear-gradient(to bottom, #fef2f2 0%, white 100%);
+}
+
+.verdict-false {
+    border-color: #d32f2f;
+    background: linear-gradient(to bottom, #ffebee 0%, white 100%);
+}
+
+
+@keyframes stamp {
+    0% {
+        opacity: 0;
+        transform: rotate(-5deg) scale(5);
+    }
+
+    60% {
+        opacity: 0.8;
+        transform: rotate(2deg) scale(1.1);
+    }
+
+    80% {
+        transform: rotate(-1deg) scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(-2deg) scale(1);
+    }
+}
+
+.verdict-text {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.verdict-verified .verdict-text {
+    color: #2d8659;
+}
+
+.verdict-partial .verdict-text {
+    color: #f59e0b;
+}
+
+.verdict-unverified .verdict-text {
+    color: #c62828;
+}
+
+.verdict-false .verdict-text {
+    color: #d32f2f;
+}
+
+.verdict-stats {
+    margin: 12px 0 0 0;
+    font-size: 1rem;
+    color: #333;
+    font-style: italic;
+}
+
+.section-title {
+    margin: 30px 0 20px 0;
+    font-size: 1.5rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 3px solid #333;
+    padding-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+
+.claims-container {
+    column-count: 1;
+    column-gap: 30px;
+}
+
+
+.claim-card {
+    margin: 0 0 25px 0;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 0;
+    background: white;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.claim-verified {
+    border-left: 5px solid #2d8659;
+}
+
+.claim-uncertain {
+    border-left: 5px solid #f59e0b;
+}
+
+.claim-needs-context {
+    background: #fff8e1;
+    border-left: 5px solid #ff9800;
+}
+
+.claim-needs-context .claim-status {
+    color: #ff9800;
+    background: #fff8e1;
+}
+
+.claim-unverified {
+    border-left: 5px solid #c62828;
+}
+
+.claim-false {
+    border-left: 5px solid #d32f2f;
+}
+
+.claim-header {
+    display: flex;
+    align-items: start;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.claim-symbol {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.claim-symbol.large {
+    font-size: 2.5rem;
+}
+
+.claim-content {
+    flex: 1;
+}
+
+
+.claim-text {
+    margin: 0 0 12px 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-family: 'Times New Roman', Times, serif;
+    color: #1a1a1a;
+}
+
+.claim-text strong {
+    font-weight: bold;
+    font-size: 1.15rem;
+}
+
+.claim-text.large {
+    font-size: 1.3rem;
+}
+
+
+.claim-status {
+    margin: 0 0 10px 0;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    display: inline-block;
+    border: 1px solid currentColor;
+}
+
+.claim-verified .claim-status {
+    color: #2d8659;
+    background: #f0fdf4;
+}
+
+.claim-uncertain .claim-status {
+    color: #f59e0b;
+    background: #fffbeb;
+}
+
+.claim-unverified .claim-status {
+    color: #c62828;
+    background: #fef2f2;
+}
+
+.claim-false .claim-status {
+    color: #d32f2f;
+    background: #ffebee;
+}
+
+.uncertain-note {
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: #92400e;
+    font-style: italic;
+    padding: 8px 12px;
+    background: #fef3c7;
+    border-left: 3px solid #f59e0b;
+}
+
+.false-note {
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: #b71c1c;
+    font-style: italic;
+    padding: 8px 12px;
+    background: #ffebee;
+    border-left: 3px solid #d32f2f;
+}
+
+.sources-list {
+    margin-top: 15px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+.sources-header {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #333;
+    letter-spacing: 0.5px;
+}
+
+.source-item {
+    margin: 12px 0;
+    padding: 10px 12px;
+    background: #fafafa;
+    border-left: 3px solid #0066cc;
+}
+
+.source-trusted {
+    background: #f0fdf4;
+    border-left-color: #2d8659;
+}
+
+.source-untrusted {
+    background: #fef3c7;
+    border-left-color: #f59e0b;
+}
+
+.source-link {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.source-link:hover {
+    text-decoration: underline;
+}
+
+.source-trusted .source-link {
+    color: #2d8659;
+}
+
+.source-untrusted .source-link {
+    color: #d97706;
+}
+
+.source-meta {
+    margin: 5px 0 0 0;
+    font-size: 0.8rem;
+    color: #666;
+    font-style: italic;
+}
+
+.no-sources {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    padding: 15px;
+    background: #f5f5f5;
+    border: 1px dashed #ccc;
+}
+
+.no-sources-manual {
+    font-size: 1rem;
+    color: #666;
+    text-align: center;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+
+.close-btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 15px 50px;
+    font-size: 1.1rem;
+    background: #333;
+    color: white;
+    border: 3px solid #333;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: white;
+    color: #333;
+}
+
+
+.newspaper-ornament {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: #999;
+}
+
+
+.muckrake-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.02) 2px,
+            rgba(0, 0, 0, 0.02) 4px);
+    pointer-events: none;
+    border-radius: 4px;
+}
+
+.muckrake-panel::-webkit-scrollbar {
+    width: 12px;
+}
+
+.muckrake-panel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.muckrake-panel::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+}
+
+.muckrake-panel::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
